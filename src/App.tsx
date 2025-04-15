@@ -11,6 +11,15 @@ import {useState} from "react";
 // let tasks = arr[0];
 // let setTasks = arr[1];
 
+export function Counter(){
+
+    console.log('Counter rendered')
+    const arr = useState(5);
+    const data = arr[0]
+    const setData = arr[1]
+
+    return <div onClick={ () => {setData(data + 1)}}>{data}</div>
+}
 
 function App() {
 
@@ -23,12 +32,13 @@ function App() {
 
  let arr = useState(initTasks); // initial state
 
- let tasks = arr[0]
+ let tasks = arr[0] // initial tasks
  let setTasks = arr[1]
 
 
     const removeTask = (id: number) => {
-        initTasks = initTasks.filter(task => task.id !== id)
+        const filteredTasks = tasks.filter(task => task.id !== id)
+        setTasks(filteredTasks);
     }
 
     // TODO в новый массив фильтруем/добавляем все таски, id которой не равна id той таски, которую нам надо удалить
