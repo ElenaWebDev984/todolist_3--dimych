@@ -1,3 +1,5 @@
+import {FilterValuesType} from "./App.tsx";
+
 export type TaskType = {
     id: number
     title: string
@@ -8,6 +10,7 @@ type PropsTypes = {
     title: string
     tasks: TaskType[]
     removeTask: (id: number) => void
+    changeFilter: (value: FilterValuesType) => void
 }
 
 
@@ -32,9 +35,9 @@ export const Todolist = (props: PropsTypes) => { // {title: 'What to learn, task
                 })}
             </ul>
             <div>
-                <button>All</button>
-                <button>Active</button>
-                <button>Completed</button>
+                <button onClick={ () => { props.changeFilter('all')}}>All</button>
+                <button onClick={ () => { props.changeFilter('active')}}>Active</button>
+                <button onClick={ () => { props.changeFilter('completed')}}>Completed</button>
             </div>
         </div>
     )
